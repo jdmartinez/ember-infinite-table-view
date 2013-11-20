@@ -1,4 +1,5 @@
-# Hello world!
+Ember InfiniteTableView
+=======================
 
-This is a placeholder README file for your project. Update it with information about your project,
-so others can find out more.
+
+Vista de tabla con paginación infinita con un estilo parecido a UITableView de iOS
