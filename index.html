@@ -30,7 +30,7 @@
         <h1>
 <a name="ember-infinitetableview" class="anchor" href="#ember-infinitetableview"><span class="octicon octicon-link"></span></a>Ember InfiniteTableView</h1>
 
-<p>Table view with similar style to iOS UITableView</p>
+<p>Table view with similar style to iOS UITableView.</p>
 
 <h2>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
@@ -43,46 +43,46 @@
 </ul><h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"users"</span><span class="nt">&gt;</span>
-    <span class="p">{{</span><span class="err">#</span><span class="nx">infinite</span><span class="o">-</span><span class="nx">table</span><span class="o">-</span><span class="nx">view</span> <span class="nx">controllerBinding</span><span class="o">=</span><span class="s2">"controller"</span><span class="p">}}</span>
-      <span class="p">{{</span><span class="err">#</span><span class="nx">infinite</span><span class="o">-</span><span class="nx">table</span><span class="o">-</span><span class="nx">view</span><span class="o">-</span><span class="nx">header</span><span class="p">}}</span>        
-        <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"form-group input-group"</span><span class="o">&gt;</span>      
-          <span class="p">{{</span><span class="nx">view</span> <span class="nx">Ember</span><span class="p">.</span><span class="nx">TextField</span> <span class="nx">placeholder</span><span class="o">=</span><span class="s2">"Search"</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"form-control"</span> <span class="nx">valueBinding</span><span class="o">=</span><span class="s2">"controller.searchText"</span><span class="p">}}</span>
-          <span class="o">&lt;</span><span class="nx">span</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"input-group-addon"</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">i</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"glyphicon glyphicon-search"</span><span class="o">&gt;&lt;</span><span class="err">/i&gt;</span>
-          <span class="o">&lt;</span><span class="err">/span&gt;</span>
-        <span class="o">&lt;</span><span class="err">/div&gt;</span>
-      <span class="p">{{</span><span class="err">/infinite-table-view-header}}</span>
+<pre lang="handlebars"><code>&lt;script type="text/x-handlebars" data-template-name="users"&gt;
+    {{#infinite-table-view controllerBinding="controller"}}
+      {{#infinite-table-view-header}}        
+        &lt;div class="form-group input-group"&gt;      
+          {{view Ember.TextField placeholder="Search" class="form-control" valueBinding="controller.searchText"}}
+          &lt;span class="input-group-addon"&gt;
+            &lt;i class="glyphicon glyphicon-search"&gt;&lt;/i&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+      {{/infinite-table-view-header}}
 
-      <span class="p">{{</span><span class="err">#</span><span class="nx">infinite</span><span class="o">-</span><span class="nx">table</span><span class="o">-</span><span class="nx">view</span><span class="o">-</span><span class="nx">items</span><span class="p">}}</span>                
-        <span class="p">{{</span><span class="err">#</span><span class="nx">each</span> <span class="nx">item</span> <span class="k">in</span> <span class="nx">items</span><span class="p">}}</span>
-          <span class="p">{{</span><span class="nx">infinite</span><span class="o">-</span><span class="nx">table</span><span class="o">-</span><span class="nx">view</span><span class="o">-</span><span class="nx">item</span> <span class="nx">item</span><span class="o">=</span><span class="nx">item</span><span class="p">}}</span>
-        <span class="p">{{</span><span class="err">/each}}</span>
-      <span class="p">{{</span><span class="err">/infinite-table-view-items}}</span>
+      {{#infinite-table-view-items}}                
+        {{#each item in items}}
+          {{infinite-table-view-item item=item}}
+        {{/each}}
+      {{/infinite-table-view-items}}
 
-    <span class="p">{{</span><span class="err">/infinite-table-view}}      </span>
-  <span class="nt">&lt;/script&gt;</span>
+    {{/infinite-table-view}}      
+  &lt;/script&gt;
 
-  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"components/infinite-table-view-header"</span><span class="nt">&gt;</span>        
-    <span class="p">{{</span><span class="nx">yield</span><span class="p">}}</span>
-  <span class="nt">&lt;/script&gt;</span>
+  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-header"&gt;        
+    {{yield}}
+  &lt;/script&gt;
 
-  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"components/infinite-table-view"</span><span class="nt">&gt;</span>           
-    <span class="p">{{</span><span class="nx">yield</span><span class="p">}}</span>
-  <span class="nt">&lt;/script&gt;</span>
+  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view"&gt;           
+    {{yield}}
+  &lt;/script&gt;
 
-  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"components/infinite-table-view-items"</span><span class="nt">&gt;</span>
-    <span class="p">{{</span><span class="nx">yield</span><span class="p">}}</span>
-  <span class="nt">&lt;/script&gt;</span>    
+  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-items"&gt;
+    {{yield}}
+  &lt;/script&gt;    
 
-  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/x-handlebars"</span> <span class="na">data-template-name=</span><span class="s">"components/infinite-table-view-item"</span><span class="nt">&gt;</span>        
-    <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"#"</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">img</span> <span class="p">{{</span><span class="nx">bindAttr</span> <span class="nx">src</span><span class="o">=</span><span class="nx">item</span><span class="p">.</span><span class="nx">avatar_url</span> <span class="nx">alt</span><span class="o">=</span><span class="nx">item</span><span class="p">.</span><span class="nx">login</span><span class="p">}}</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"img-circle avatar"</span><span class="o">&gt;</span>
-      <span class="o">&lt;</span><span class="nx">h4</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"list-group-item-heading"</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">item</span><span class="p">.</span><span class="nx">login</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
-      <span class="o">&lt;</span><span class="nx">div</span> <span class="kr">class</span><span class="o">=</span><span class="s2">"list-group-item-text"</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">item</span><span class="p">.</span><span class="nx">type</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-    <span class="o">&lt;</span><span class="err">/a&gt; </span>
-  <span class="nt">&lt;/script&gt;</span>  
-</pre></div>
+  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-item"&gt;        
+    &lt;a href="#"&gt;
+      &lt;img {{bindAttr src=item.avatar_url alt=item.login}} class="img-circle avatar"&gt;
+      &lt;h4 class="list-group-item-heading"&gt;{{item.login}}&lt;/h4&gt;
+      &lt;div class="list-group-item-text"&gt;{{item.type}}&lt;/div&gt;
+    &lt;/a&gt; 
+  &lt;/script&gt;  
+</code></pre>
 
 <h2>
 <a name="roadmap" class="anchor" href="#roadmap"><span class="octicon octicon-link"></span></a>Roadmap</h2>
