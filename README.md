@@ -1,6 +1,8 @@
 # Ember InfiniteTableView
 
-Table view with similar style to iOS UITableView
+Table view with similar style to iOS UITableView.
+
+`InfiniteTableView` may incluye a header or footer that *performs* actions to the component.
 
 ## Dependencies
 
@@ -11,27 +13,39 @@ Table view with similar style to iOS UITableView
 
 ## Usage
 
+The easiest way to create an `InfiniteTableView` is via a template.
+
 ```handlebars
-<script type="text/x-handlebars" data-template-name="users">
-    {{#infinite-table-view controllerBinding="controller"}}
-    
-        {{#infinite-table-view-header}}        
-            <!-- Header content goes here -->  
-        {{/infinite-table-view-header}}
-                
-        {{#infinite-table-view-items}}                
-            {{#each item in items}}
-                {{infinite-table-view-item item=item}}
-            {{/each}}
-        {{/infinite-table-view-items}}
-      
-      {{#infinite-table-view-footer}}        
-        <!-- Footer content goes here -->  
-      {{/infinite-table-view-footer}}
-      
-    {{/infinite-table-view}}      
-</script>
-      
+{{#infinite-table-view controllerBinding="controller"}}
+
+    {{infinite-table-view-header}}        
+
+    {{infinite-table-view-items}}                
+
+    {{infinite-table-view-footer}}        
+
+{{/infinite-table-view}}      
+```   
+To access to controller within any section of `InfiniteTableView`, you have to include *content* inside or via binding property. 
+
+```handlebars
+{{#infinite-table-view controllerBinding="controller"}}
+
+    {{#infinite-table-view-header}}        
+        <!-- Header content goes here -->  
+    {{/infinite-table-view-header}}
+            
+    {{#infinite-table-view-items}}                
+        {{#each item in items}}
+            {{infinite-table-view-item item=item}}
+        {{/each}}
+    {{/infinite-table-view-items}}
+  
+  {{#infinite-table-view-footer}}        
+    <!-- Footer content goes here -->  
+  {{/infinite-table-view-footer}}
+  
+{{/infinite-table-view}}      
 ```
 ## Roadmap
 
