@@ -18,7 +18,7 @@
     <div class="wrapper">
       <header>
         <h1>Ember Infinite Table View</h1>
-        <p>Vista de tabla con paginación infinita con un estilo parecido a UITableView de iOS</p>
+        <p>Table view with similar style to iOS UITableView</p>
         <p class="view"><a href="https://github.com/jdmartinez/ember-infinite-table-view">View the Project on GitHub <small>jdmartinez/ember-infinite-table-view</small></a></p>
         <ul>
           <li><a href="https://github.com/jdmartinez/ember-infinite-table-view/zipball/master">Download <strong>ZIP File</strong></a></li>
@@ -45,43 +45,24 @@
 
 <pre lang="handlebars"><code>&lt;script type="text/x-handlebars" data-template-name="users"&gt;
     {{#infinite-table-view controllerBinding="controller"}}
-      {{#infinite-table-view-header}}        
-        &lt;div class="form-group input-group"&gt;      
-          {{view Ember.TextField placeholder="Search" class="form-control" valueBinding="controller.searchText"}}
-          &lt;span class="input-group-addon"&gt;
-            &lt;i class="glyphicon glyphicon-search"&gt;&lt;/i&gt;
-          &lt;/span&gt;
-        &lt;/div&gt;
-      {{/infinite-table-view-header}}
 
-      {{#infinite-table-view-items}}                
-        {{#each item in items}}
-          {{infinite-table-view-item item=item}}
-        {{/each}}
-      {{/infinite-table-view-items}}
+        {{#infinite-table-view-header}}        
+            &lt;!-- Header content goes here --&gt;  
+        {{/infinite-table-view-header}}
+
+        {{#infinite-table-view-items}}                
+            {{#each item in items}}
+                {{infinite-table-view-item item=item}}
+            {{/each}}
+        {{/infinite-table-view-items}}
+
+      {{#infinite-table-view-footer}}        
+        &lt;!-- Footer content goes here --&gt;  
+      {{/infinite-table-view-footer}}
 
     {{/infinite-table-view}}      
-  &lt;/script&gt;
+&lt;/script&gt;
 
-  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-header"&gt;        
-    {{yield}}
-  &lt;/script&gt;
-
-  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view"&gt;           
-    {{yield}}
-  &lt;/script&gt;
-
-  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-items"&gt;
-    {{yield}}
-  &lt;/script&gt;    
-
-  &lt;script type="text/x-handlebars" data-template-name="components/infinite-table-view-item"&gt;        
-    &lt;a href="#"&gt;
-      &lt;img {{bindAttr src=item.avatar_url alt=item.login}} class="img-circle avatar"&gt;
-      &lt;h4 class="list-group-item-heading"&gt;{{item.login}}&lt;/h4&gt;
-      &lt;div class="list-group-item-text"&gt;{{item.type}}&lt;/div&gt;
-    &lt;/a&gt; 
-  &lt;/script&gt;  
 </code></pre>
 
 <h2>
