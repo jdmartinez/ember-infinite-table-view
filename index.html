@@ -32,6 +32,8 @@
 
 <p>Table view with similar style to iOS UITableView.</p>
 
+<p><code>InfiniteTableView</code> may incluye a header or footer that <em>performs</em> actions to the component.</p>
+
 <h2>
 <a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
 
@@ -43,26 +45,38 @@
 </ul><h2>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<pre lang="handlebars"><code>&lt;script type="text/x-handlebars" data-template-name="users"&gt;
-    {{#infinite-table-view controllerBinding="controller"}}
+<p>The easiest way to create an <code>InfiniteTableView</code> is via a template.</p>
 
-        {{#infinite-table-view-header}}        
-            &lt;!-- Header content goes here --&gt;  
-        {{/infinite-table-view-header}}
+<pre lang="handlebars"><code>{{#infinite-table-view controllerBinding="controller"}}
 
-        {{#infinite-table-view-items}}                
-            {{#each item in items}}
-                {{infinite-table-view-item item=item}}
-            {{/each}}
-        {{/infinite-table-view-items}}
+    {{infinite-table-view-header}}        
 
-      {{#infinite-table-view-footer}}        
-        &lt;!-- Footer content goes here --&gt;  
-      {{/infinite-table-view-footer}}
+    {{infinite-table-view-items}}                
 
-    {{/infinite-table-view}}      
-&lt;/script&gt;
+    {{infinite-table-view-footer}}        
 
+{{/infinite-table-view}}      
+</code></pre>
+
+<p>To access to controller within any section of <code>InfiniteTableView</code>, you have to include <em>content</em> inside or via binding property. </p>
+
+<pre lang="handlebars"><code>{{#infinite-table-view controllerBinding="controller"}}
+
+    {{#infinite-table-view-header}}        
+        &lt;!-- Header content goes here --&gt;  
+    {{/infinite-table-view-header}}
+
+    {{#infinite-table-view-items}}                
+        {{#each item in items}}
+            {{infinite-table-view-item item=item}}
+        {{/each}}
+    {{/infinite-table-view-items}}
+
+  {{#infinite-table-view-footer}}        
+    &lt;!-- Footer content goes here --&gt;  
+  {{/infinite-table-view-footer}}
+
+{{/infinite-table-view}}      
 </code></pre>
 
 <h2>
