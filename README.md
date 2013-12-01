@@ -11,7 +11,7 @@ Table view with similar style to iOS UITableView
 
 ## Usage
 
-```html
+```handlebars
 <script type="text/x-handlebars" data-template-name="users">
     {{#infinite-table-view controllerBinding="controller"}}
       {{#infinite-table-view-header}}        
