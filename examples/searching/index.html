@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="InfiniteListView" />
+  <meta charset="utf-8">
+  <title>Ember Infinite List View example</title>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
+  <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  
+  <script type="text/x-handlebars">
+    <div class="col-md-12">      
+      {{outlet}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="users">
+    {{#infinite-table-view controllerBinding="controller"}}
+      {{#infinite-table-view-header}}
+        {{!search-text controllerBinding="controller"}}
+
+        <div class="form-group input-group">      
+          {{view Ember.TextField placeholder="Search" class="form-control" valueBinding="controller.searchText"}}
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-search"></i>
+          </span>
+        </div>
+      {{/infinite-table-view-header}}
+                
+      {{#infinite-table-view-items}}                
+        {{#each item in items}}
+          {{infinite-table-view-item item=item}}
+        {{/each}}
+      {{/infinite-table-view-items}}
+      
+    {{/infinite-table-view}}      
+  </script>
+    
+  <script type="text/x-handlebars" data-template-name="components/infinite-table-view-header">        
+    {{yield}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="components/infinite-table-view">           
+    {{yield}}
+  </script>
+    
+  <script type="text/x-handlebars" data-template-name="components/infinite-table-view-items">
+    {{yield}}
+  </script>    
+  
+  <script type="text/x-handlebars" data-template-name="components/infinite-table-view-item">        
+    <a href="#">
+      <img {{bindAttr src=item.avatar_url alt=item.login}} class="img-circle avatar">
+      <h4 class="list-group-item-heading">{{item.login}}</h4>
+      <div class="list-group-item-text">{{item.type}}</div>
+    </a> 
+  </script>        
+    
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="http://builds.emberjs.com/handlebars-1.0.0.js"></script>
+  <script src="http://builds.emberjs.com/tags/v1.1.2/ember.min.js"></script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
