@@ -4,6 +4,8 @@ Table view with similar style to iOS UITableView.
 
 `InfiniteTableView` may incluye a header or footer that *performs* actions to the component.
 
+[Demo](http://jdmartinez.github.io/ember-infinite-table-view/examples/searching "Demo")
+
 ## Dependencies
 
 * jQuery
